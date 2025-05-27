@@ -63,7 +63,7 @@ const getErrorMessage = (field, errorKey) => {
 const formErrors = computed(() => ({
   question: getErrorMessage('question', 'QUESTION'),
   answer: getErrorMessage('answer', 'ANSWER'),
-  topicId: getErrorMessage('topicId', 'ASSISTANT'),
+  topicId: getErrorMessage('topicId', 'TOPIC'),
 }));
 
 const handleCancel = () => emit('cancel');
@@ -127,14 +127,14 @@ watch(
 
     <div class="flex flex-col gap-1">
       <label for="topic" class="mb-0.5 text-sm font-medium text-n-slate-12">
-        {{ t('CAPTAIN.RESPONSES.FORM.ASSISTANT.LABEL') }}
+        {{ t('CAPTAIN.RESPONSES.FORM.TOPIC.LABEL') }}
       </label>
       <ComboBox
         id="topic"
         v-model="state.topicId"
         :options="topicList"
         :has-error="!!formErrors.topicId"
-        :placeholder="t('CAPTAIN.RESPONSES.FORM.ASSISTANT.PLACEHOLDER')"
+        :placeholder="t('CAPTAIN.RESPONSES.FORM.TOPIC.PLACEHOLDER')"
         class="[&>div>button]:bg-n-alpha-black2 [&>div>button:not(.focused)]:dark:outline-n-weak [&>div>button:not(.focused)]:hover:!outline-n-slate-6"
         :message="formErrors.topicId"
       />

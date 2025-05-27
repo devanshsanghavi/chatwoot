@@ -336,7 +336,7 @@
       "YOU": "あなた",
       "USE": "これを使用",
       "RESET": "リセット",
-      "SELECT_ASSISTANT": "Select Topic",
+      "SELECT_TOPIC": "Select Topic",
       "PROMPTS": {
         "SUMMARIZE": {
           "LABEL": "Summarize this conversation",
@@ -354,7 +354,7 @@
     },
     "PLAYGROUND": {
       "USER": "あなた",
-      "ASSISTANT": "アシスタント",
+      "TOPIC": "アシスタント",
       "MESSAGE_PLACEHOLDER": "Type your message...",
       "HEADER": "Playground",
       "DESCRIPTION": "Use this playground to send messages to your topic and check if it responds accurately, quickly, and in the tone you expect.",
@@ -381,7 +381,7 @@
       "CREATE": "作成",
       "EDIT": "更新"
     },
-    "ASSISTANTS": {
+    "TOPICS": {
       "HEADER": "アシスタント",
       "ADD_NEW": "新しいアシスタントを作成",
       "DELETE": {
@@ -450,8 +450,8 @@
         "NOT_FOUND": "Could not find the topic. Please try again."
       },
       "OPTIONS": {
-        "EDIT_ASSISTANT": "アシスタントを編集",
-        "DELETE_ASSISTANT": "アシスタントを削除",
+        "EDIT_TOPIC": "アシスタントを編集",
+        "DELETE_TOPIC": "アシスタントを削除",
         "VIEW_CONNECTED_INBOXES": "接続された受信トレイを表示"
       },
       "EMPTY_STATE": {
@@ -482,7 +482,7 @@
           "PLACEHOLDER": "ドキュメントのURLを入力",
           "ERROR": "有効なURLを入力してください"
         },
-        "ASSISTANT": {
+        "TOPIC": {
           "LABEL": "アシスタント",
           "PLACEHOLDER": "アシスタントを選択",
           "ERROR": "アシスタントの選択が必要です"
@@ -536,9 +536,9 @@
         "ERROR_MESSAGE": "FAQの削除中にエラーが発生しました。もう一度お試しください。"
       },
       "FILTER": {
-        "ASSISTANT": "アシスタント: {selected}",
+        "TOPIC": "アシスタント: {selected}",
         "STATUS": "状況: {selected}",
-        "ALL_ASSISTANTS": "すべて"
+        "ALL_TOPICS": "すべて"
       },
       "STATUS": {
         "TITLE": "状況",
@@ -563,7 +563,7 @@
           "PLACEHOLDER": "ここに回答を入力",
           "ERROR": "有効な回答を入力してください。"
         },
-        "ASSISTANT": {
+        "TOPIC": {
           "LABEL": "アシスタント",
           "PLACEHOLDER": "アシスタントを選択",
           "ERROR": "アシスタントを選択してください。"

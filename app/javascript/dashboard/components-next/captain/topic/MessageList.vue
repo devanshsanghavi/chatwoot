@@ -31,7 +31,7 @@ const getMessageDirection = sender =>
 const getAvatarName = sender =>
   isUserMessage(sender)
     ? t('CAPTAIN.PLAYGROUND.USER')
-    : t('CAPTAIN.PLAYGROUND.ASSISTANT');
+    : t('CAPTAIN.PLAYGROUND.TOPIC');
 
 const getMessageStyle = sender =>
   isUserMessage(sender)

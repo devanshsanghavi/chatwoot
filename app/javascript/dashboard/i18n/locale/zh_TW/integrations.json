@@ -336,7 +336,7 @@
       "YOU": "You",
       "USE": "Use this",
       "RESET": "Reset",
-      "SELECT_ASSISTANT": "Select Topic",
+      "SELECT_TOPIC": "Select Topic",
       "PROMPTS": {
         "SUMMARIZE": {
           "LABEL": "Summarize this conversation",
@@ -354,7 +354,7 @@
     },
     "PLAYGROUND": {
       "USER": "You",
-      "ASSISTANT": "Topic",
+      "TOPIC": "Topic",
       "MESSAGE_PLACEHOLDER": "輸入你的訊息...",
       "HEADER": "Playground",
       "DESCRIPTION": "Use this playground to send messages to your topic and check if it responds accurately, quickly, and in the tone you expect.",
@@ -381,7 +381,7 @@
       "CREATE": "建立",
       "EDIT": "更新"
     },
-    "ASSISTANTS": {
+    "TOPICS": {
       "HEADER": "Topics",
       "ADD_NEW": "Create a new topic",
       "DELETE": {
@@ -450,8 +450,8 @@
         "NOT_FOUND": "Could not find the topic. Please try again."
       },
       "OPTIONS": {
-        "EDIT_ASSISTANT": "Edit Topic",
-        "DELETE_ASSISTANT": "Delete Topic",
+        "EDIT_TOPIC": "Edit Topic",
+        "DELETE_TOPIC": "Delete Topic",
         "VIEW_CONNECTED_INBOXES": "View connected inboxes"
       },
       "EMPTY_STATE": {
@@ -482,7 +482,7 @@
           "PLACEHOLDER": "Enter the URL of the document",
           "ERROR": "Please provide a valid URL for the document"
         },
-        "ASSISTANT": {
+        "TOPIC": {
           "LABEL": "Topic",
           "PLACEHOLDER": "Select the topic",
           "ERROR": "The topic field is required"
@@ -536,9 +536,9 @@
         "ERROR_MESSAGE": "There was an error deleting the FAQ, please try again."
       },
       "FILTER": {
-        "ASSISTANT": "Topic: {selected}",
+        "TOPIC": "Topic: {selected}",
         "STATUS": "Status: {selected}",
-        "ALL_ASSISTANTS": "所有的"
+        "ALL_TOPICS": "所有的"
       },
       "STATUS": {
         "TITLE": "狀態",
@@ -563,7 +563,7 @@
           "PLACEHOLDER": "Enter the answer here",
           "ERROR": "Please provide a valid answer."
         },
-        "ASSISTANT": {
+        "TOPIC": {
           "LABEL": "Topic",
           "PLACEHOLDER": "Select an topic",
           "ERROR": "Please select an topic."

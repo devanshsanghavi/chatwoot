@@ -700,7 +700,7 @@ describe('#addMentions', () => {
       await actions.getInboxCaptainTopicById({ commit }, 1);
       expect(commit.mock.calls).toEqual([
         [
-          types.SET_INBOX_CAPTAIN_ASSISTANT,
+          types.SET_INBOX_CAPTAIN_TOPIC,
           { id: 1, name: 'Topic', description: 'Topic description' },
         ],
       ]);

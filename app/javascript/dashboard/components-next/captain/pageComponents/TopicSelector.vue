@@ -20,7 +20,7 @@ const isFilterOpen = ref(false);
 const topics = useMapGetter('captainTopics/getRecords');
 const topicOptions = computed(() => [
   {
-    label: t(`CAPTAIN.RESPONSES.FILTER.ALL_ASSISTANTS`),
+    label: t(`CAPTAIN.RESPONSES.FILTER.ALL_TOPICS`),
     value: 'all',
     action: 'filter',
   },
@@ -35,7 +35,7 @@ const selectedTopicLabel = computed(() => {
   const topic = topicOptions.value.find(
     option => option.value === props.topicId
   );
-  return t('CAPTAIN.RESPONSES.FILTER.ASSISTANT', {
+  return t('CAPTAIN.RESPONSES.FILTER.TOPIC', {
     selected: topic ? topic.label : '',
   });
 });

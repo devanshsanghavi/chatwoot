@@ -555,7 +555,7 @@ describe('#mutations', () => {
     });
   });
 
-  describe('#SET_INBOX_CAPTAIN_ASSISTANT', () => {
+  describe('#SET_INBOX_CAPTAIN_TOPIC', () => {
     it('set inbox captain topic', () => {
       const state = { copilotTopic: {} };
       const data = {
@@ -565,7 +565,7 @@ describe('#mutations', () => {
           description: 'Topic description',
         },
       };
-      mutations[types.SET_INBOX_CAPTAIN_ASSISTANT](state, data);
+      mutations[types.SET_INBOX_CAPTAIN_TOPIC](state, data);
       expect(state.copilotTopic).toEqual(data.topic);
     });
   });

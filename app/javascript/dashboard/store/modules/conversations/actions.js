@@ -492,7 +492,7 @@ const actions = {
   getInboxCaptainTopicById: async ({ commit }, conversationId) => {
     try {
       const response = await ConversationApi.getInboxTopic(conversationId);
-      commit(types.SET_INBOX_CAPTAIN_ASSISTANT, response.data);
+      commit(types.SET_INBOX_CAPTAIN_TOPIC, response.data);
     } catch (error) {
       // Handle error
     }

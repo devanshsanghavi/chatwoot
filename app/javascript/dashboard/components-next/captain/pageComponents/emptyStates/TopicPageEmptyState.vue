@@ -14,16 +14,16 @@ const onClick = () => {
 
 <template>
   <FeatureSpotlight
-    :title="$t('CAPTAIN.ASSISTANTS.EMPTY_STATE.FEATURE_SPOTLIGHT.TITLE')"
-    :note="$t('CAPTAIN.ASSISTANTS.EMPTY_STATE.FEATURE_SPOTLIGHT.NOTE')"
+    :title="$t('CAPTAIN.TOPICS.EMPTY_STATE.FEATURE_SPOTLIGHT.TITLE')"
+    :note="$t('CAPTAIN.TOPICS.EMPTY_STATE.FEATURE_SPOTLIGHT.NOTE')"
     fallback-thumbnail="/assets/images/dashboard/captain/topic-light.svg"
     fallback-thumbnail-dark="/assets/images/dashboard/captain/topic-dark.svg"
     learn-more-url="https://chwt.app/captain-topic"
     class="mb-8"
   />
   <EmptyStateLayout
-    :title="$t('CAPTAIN.ASSISTANTS.EMPTY_STATE.TITLE')"
-    :subtitle="$t('CAPTAIN.ASSISTANTS.EMPTY_STATE.SUBTITLE')"
+    :title="$t('CAPTAIN.TOPICS.EMPTY_STATE.TITLE')"
+    :subtitle="$t('CAPTAIN.TOPICS.EMPTY_STATE.SUBTITLE')"
     :action-perms="['administrator']"
   >
     <template #empty-state-item>
@@ -40,7 +40,7 @@ const onClick = () => {
     </template>
     <template #actions>
       <Button
-        :label="$t('CAPTAIN.ASSISTANTS.ADD_NEW')"
+        :label="$t('CAPTAIN.TOPICS.ADD_NEW')"
         icon="i-lucide-plus"
         @click="onClick"
       />

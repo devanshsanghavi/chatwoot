@@ -74,8 +74,8 @@ onMounted(() => store.dispatch('captainTopics/get'));
 
 <template>
   <PageLayout
-    :header-title="$t('CAPTAIN.ASSISTANTS.HEADER')"
-    :button-label="$t('CAPTAIN.ASSISTANTS.ADD_NEW')"
+    :header-title="$t('CAPTAIN.TOPICS.HEADER')"
+    :button-label="$t('CAPTAIN.TOPICS.ADD_NEW')"
     :button-policy="['administrator']"
     :show-pagination-footer="false"
     :is-fetching="isFetching"
@@ -86,8 +86,8 @@ onMounted(() => store.dispatch('captainTopics/get'));
     <template #knowMore>
       <FeatureSpotlightPopover
         :button-label="$t('CAPTAIN.HEADER_KNOW_MORE')"
-        :title="$t('CAPTAIN.ASSISTANTS.EMPTY_STATE.FEATURE_SPOTLIGHT.TITLE')"
-        :note="$t('CAPTAIN.ASSISTANTS.EMPTY_STATE.FEATURE_SPOTLIGHT.NOTE')"
+        :title="$t('CAPTAIN.TOPICS.EMPTY_STATE.FEATURE_SPOTLIGHT.TITLE')"
+        :note="$t('CAPTAIN.TOPICS.EMPTY_STATE.FEATURE_SPOTLIGHT.NOTE')"
         fallback-thumbnail="/assets/images/dashboard/captain/topic-popover-light.svg"
         fallback-thumbnail-dark="/assets/images/dashboard/captain/topic-popover-dark.svg"
         learn-more-url="https://chwt.app/captain-topic"

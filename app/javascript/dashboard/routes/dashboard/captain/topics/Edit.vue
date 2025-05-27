@@ -27,10 +27,10 @@ const handleSubmit = async updatedTopic => {
       id: topicId,
       ...updatedTopic,
     });
-    useAlert(t('CAPTAIN.ASSISTANTS.EDIT.SUCCESS_MESSAGE'));
+    useAlert(t('CAPTAIN.TOPICS.EDIT.SUCCESS_MESSAGE'));
   } catch (error) {
     const errorMessage =
-      error?.message || t('CAPTAIN.ASSISTANTS.EDIT.ERROR_MESSAGE');
+      error?.message || t('CAPTAIN.TOPICS.EDIT.ERROR_MESSAGE');
     useAlert(errorMessage);
   }
 };
@@ -52,7 +52,7 @@ onMounted(() => {
   >
     <template #body>
       <div v-if="!isTopicAvailable">
-        {{ t('CAPTAIN.ASSISTANTS.EDIT.NOT_FOUND') }}
+        {{ t('CAPTAIN.TOPICS.EDIT.NOT_FOUND') }}
       </div>
       <div v-else class="flex gap-4 h-full">
         <div class="flex-1 lg:overflow-auto pr-4 h-full md:h-auto">

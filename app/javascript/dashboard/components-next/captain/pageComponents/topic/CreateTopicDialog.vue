@@ -32,7 +32,7 @@ const updateTopic = topicDetails =>
   });
 
 const i18nKey = computed(
-  () => `CAPTAIN.ASSISTANTS.${props.type.toUpperCase()}`
+  () => `CAPTAIN.TOPICS.${props.type.toUpperCase()}`
 );
 
 const createTopic = topicDetails =>
@@ -69,7 +69,7 @@ defineExpose({ dialogRef });
     ref="dialogRef"
     type="edit"
     :title="t(`${i18nKey}.TITLE`)"
-    :description="t('CAPTAIN.ASSISTANTS.FORM_DESCRIPTION')"
+    :description="t('CAPTAIN.TOPICS.FORM_DESCRIPTION')"
     :show-cancel-button="false"
     :show-confirm-button="false"
     overflow-y-auto

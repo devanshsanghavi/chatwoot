@@ -26,7 +26,7 @@ const { t } = useI18n();
 const activeTopicLabel = computed(() => {
   return props.activeTopic
     ? props.activeTopic.name
-    : t('CAPTAIN.COPILOT.SELECT_ASSISTANT');
+    : t('CAPTAIN.COPILOT.SELECT_TOPIC');
 });
 </script>
 

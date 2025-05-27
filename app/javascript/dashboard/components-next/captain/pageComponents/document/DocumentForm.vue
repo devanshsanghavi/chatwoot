@@ -49,7 +49,7 @@ const getErrorMessage = (field, errorKey) => {
 
 const formErrors = computed(() => ({
   url: getErrorMessage('url', 'URL'),
-  topicId: getErrorMessage('topicId', 'ASSISTANT'),
+  topicId: getErrorMessage('topicId', 'TOPIC'),
 }));
 
 const handleCancel = () => emit('cancel');
@@ -80,14 +80,14 @@ const handleSubmit = async () => {
     />
     <div class="flex flex-col gap-1">
       <label for="topic" class="mb-0.5 text-sm font-medium text-n-slate-12">
-        {{ t('CAPTAIN.DOCUMENTS.FORM.ASSISTANT.LABEL') }}
+        {{ t('CAPTAIN.DOCUMENTS.FORM.TOPIC.LABEL') }}
       </label>
       <ComboBox
         id="topic"
         v-model="state.topicId"
         :options="topicList"
         :has-error="!!formErrors.topicId"
-        :placeholder="t('CAPTAIN.DOCUMENTS.FORM.ASSISTANT.PLACEHOLDER')"
+        :placeholder="t('CAPTAIN.DOCUMENTS.FORM.TOPIC.PLACEHOLDER')"
         class="[&>div>button]:bg-n-alpha-black2 [&>div>button:not(.focused)]:dark:outline-n-weak [&>div>button:not(.focused)]:hover:!outline-n-slate-6"
         :message="formErrors.topicId"
       />

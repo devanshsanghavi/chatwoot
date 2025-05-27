@@ -205,7 +205,7 @@ const menuItems = computed(() => {
       children: [
         {
           name: 'Topics',
-          label: t('SIDEBAR.CAPTAIN_ASSISTANTS'),
+          label: t('SIDEBAR.CAPTAIN_TOPICS'),
           to: accountScopedRoute('captain_topics_index'),
         },
         {

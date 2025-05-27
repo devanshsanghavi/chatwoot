@@ -336,7 +336,7 @@
       "YOU": "Vous",
       "USE": "Use this",
       "RESET": "Reset",
-      "SELECT_ASSISTANT": "Select Topic",
+      "SELECT_TOPIC": "Select Topic",
       "PROMPTS": {
         "SUMMARIZE": {
           "LABEL": "Résumer cette conversation",
@@ -354,7 +354,7 @@
     },
     "PLAYGROUND": {
       "USER": "Vous",
-      "ASSISTANT": "Topic",
+      "TOPIC": "Topic",
       "MESSAGE_PLACEHOLDER": "Tapez votre message...",
       "HEADER": "Terrain de jeu",
       "DESCRIPTION": "Utilisez ce terrain de jeu pour envoyer des messages à votre topic et vérifier s'il répond de manière précise, rapide et dans le ton que vous attendez.",
@@ -381,7 +381,7 @@
       "CREATE": "Créer",
       "EDIT": "Mettre à jour"
     },
-    "ASSISTANTS": {
+    "TOPICS": {
       "HEADER": "Topics",
       "ADD_NEW": "Create a new topic",
       "DELETE": {
@@ -450,8 +450,8 @@
         "NOT_FOUND": "Impossible de trouver l'topic. Veuillez réessayer."
       },
       "OPTIONS": {
-        "EDIT_ASSISTANT": "Edit Topic",
-        "DELETE_ASSISTANT": "Delete Topic",
+        "EDIT_TOPIC": "Edit Topic",
+        "DELETE_TOPIC": "Delete Topic",
         "VIEW_CONNECTED_INBOXES": "View connected inboxes"
       },
       "EMPTY_STATE": {
@@ -482,7 +482,7 @@
           "PLACEHOLDER": "Enter the URL of the document",
           "ERROR": "Please provide a valid URL for the document"
         },
-        "ASSISTANT": {
+        "TOPIC": {
           "LABEL": "Topic",
           "PLACEHOLDER": "Select the topic",
           "ERROR": "The topic field is required"
@@ -536,9 +536,9 @@
         "ERROR_MESSAGE": "There was an error deleting the FAQ, please try again."
       },
       "FILTER": {
-        "ASSISTANT": "Topic: {selected}",
+        "TOPIC": "Topic: {selected}",
         "STATUS": "Status: {selected}",
-        "ALL_ASSISTANTS": "Tous"
+        "ALL_TOPICS": "Tous"
       },
       "STATUS": {
         "TITLE": "État",
@@ -563,7 +563,7 @@
           "PLACEHOLDER": "Enter the answer here",
           "ERROR": "Please provide a valid answer."
         },
-        "ASSISTANT": {
+        "TOPIC": {
           "LABEL": "Topic",
           "PLACEHOLDER": "Select an topic",
           "ERROR": "Please select an topic."
