@@ -309,7 +309,7 @@ export const mutations = {
   [types.UPDATE_CHAT_LIST_FILTERS](_state, data) {
     _state.conversationFilters = { ..._state.conversationFilters, ...data };
   },
-  [types.SET_INBOX_CAPTAIN_TOPIC](_state, data) {
+  [types.SET_INBOX_AIAGENT_TOPIC](_state, data) {
     _state.copilotTopic = data.topic;
   },
 };

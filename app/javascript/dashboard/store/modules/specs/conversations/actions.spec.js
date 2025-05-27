@@ -688,7 +688,7 @@ describe('#addMentions', () => {
     });
   });
 
-  describe('#getInboxCaptainTopicById', () => {
+  describe('#getInboxAiagentTopicById', () => {
     it('fetches inbox topic by id', async () => {
       axios.get.mockResolvedValue({
         data: {
@@ -697,10 +697,10 @@ describe('#addMentions', () => {
           description: 'Topic description',
         },
       });
-      await actions.getInboxCaptainTopicById({ commit }, 1);
+      await actions.getInboxAiagentTopicById({ commit }, 1);
       expect(commit.mock.calls).toEqual([
         [
-          types.SET_INBOX_CAPTAIN_TOPIC,
+          types.SET_INBOX_AIAGENT_TOPIC,
           { id: 1, name: 'Topic', description: 'Topic description' },
         ],
       ]);

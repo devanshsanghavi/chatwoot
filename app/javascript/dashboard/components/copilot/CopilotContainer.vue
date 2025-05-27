@@ -19,16 +19,16 @@ const props = defineProps({
 
 const store = useStore();
 const currentUser = useMapGetter('getCurrentUser');
-const topics = useMapGetter('captainTopics/getRecords');
+const topics = useMapGetter('aiagentTopics/getRecords');
 const inboxTopic = useMapGetter('getCopilotTopic');
 const { uiSettings, updateUISettings } = useUISettings();
 
 const messages = ref([]);
-const isCaptainTyping = ref(false);
+const isAiagentTyping = ref(false);
 const selectedTopicId = ref(null);
 
 const activeTopic = computed(() => {
-  const preferredId = uiSettings.value.preferred_captain_topic_id;
+  const preferredId = uiSettings.value.preferred_aiagent_topic_id;
 
   // If the user has selected a specific topic, it takes first preference for Copilot.
   if (preferredId) {
@@ -51,7 +51,7 @@ const activeTopic = computed(() => {
 const setTopic = async topic => {
   selectedTopicId.value = topic.id;
   await updateUISettings({
-    preferred_captain_topic_id: topic.id,
+    preferred_aiagent_topic_id: topic.id,
   });
 };
 
@@ -66,7 +66,7 @@ const sendMessage = async message => {
     role: 'user',
     content: message,
   });
-  isCaptainTyping.value = true;
+  isAiagentTyping.value = true;
 
   try {
     const { data } = await ConversationAPI.requestCopilot(
@@ -91,17 +91,17 @@ const sendMessage = async message => {
     // eslint-disable-next-line
     console.log(error);
   } finally {
-    isCaptainTyping.value = false;
+    isAiagentTyping.value = false;
   }
 };
 
 onMounted(() => {
-  store.dispatch('captainTopics/get');
+  store.dispatch('aiagentTopics/get');
 });
 
 watchEffect(() => {
   if (props.conversationId) {
-    store.dispatch('getInboxCaptainTopicById', props.conversationId);
+    store.dispatch('getInboxAiagentTopicById', props.conversationId);
     selectedTopicId.value = activeTopic.value?.id;
   }
 });
@@ -111,7 +111,7 @@ watchEffect(() => {
   <Copilot
     :messages="messages"
     :support-agent="currentUser"
-    :is-captain-typing="isCaptainTyping"
+    :is-aiagent-typing="isAiagentTyping"
     :conversation-inbox-type="conversationInboxType"
     :topics="topics"
     :active-topic="activeTopic"
