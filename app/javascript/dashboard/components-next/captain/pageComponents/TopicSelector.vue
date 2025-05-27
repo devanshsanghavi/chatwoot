@@ -7,7 +7,7 @@ import Button from 'dashboard/components-next/button/Button.vue';
 import DropdownMenu from 'dashboard/components-next/dropdown-menu/DropdownMenu.vue';
 
 const props = defineProps({
-  assistantId: {
+  topicId: {
     type: [String, Number],
     required: true,
   },
@@ -17,26 +17,26 @@ const emit = defineEmits(['update']);
 const { t } = useI18n();
 const isFilterOpen = ref(false);
 
-const assistants = useMapGetter('captainTopics/getRecords');
-const assistantOptions = computed(() => [
+const topics = useMapGetter('captainTopics/getRecords');
+const topicOptions = computed(() => [
   {
     label: t(`CAPTAIN.RESPONSES.FILTER.ALL_ASSISTANTS`),
     value: 'all',
     action: 'filter',
   },
-  ...assistants.value.map(assistant => ({
-    value: assistant.id,
-    label: assistant.name,
+  ...topics.value.map(topic => ({
+    value: topic.id,
+    label: topic.name,
     action: 'filter',
   })),
 ]);
 
 const selectedTopicLabel = computed(() => {
-  const assistant = assistantOptions.value.find(
-    option => option.value === props.assistantId
+  const topic = topicOptions.value.find(
+    option => option.value === props.topicId
   );
   return t('CAPTAIN.RESPONSES.FILTER.ASSISTANT', {
-    selected: assistant ? assistant.label : '',
+    selected: topic ? topic.label : '',
   });
 });
 
@@ -60,7 +60,7 @@ const handleTopicFilterChange = ({ value }) => {
 
     <DropdownMenu
       v-if="isFilterOpen"
-      :menu-items="assistantOptions"
+      :menu-items="topicOptions"
       class="mt-2"
       @action="handleTopicFilterChange"
     />

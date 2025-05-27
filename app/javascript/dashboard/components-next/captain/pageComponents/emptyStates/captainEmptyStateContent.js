@@ -1,12 +1,12 @@
 import { INBOX_TYPES } from 'dashboard/helper/inbox';
 
-export const assistantsList = [
+export const topicsList = [
   {
     account_id: 2,
     config: { product_name: 'HelpDesk Pro' },
     created_at: 1736033561,
     description:
-      'An advanced AI assistant designed to enhance customer support solutions by automating workflows and providing instant responses.',
+      'An advanced AI topic designed to enhance customer support solutions by automating workflows and providing instant responses.',
     id: 4,
     name: 'Support Genie',
   },
@@ -60,7 +60,7 @@ export const assistantsList = [
 export const documentsList = [
   {
     account_id: 1,
-    assistant: { id: 1, name: 'Helper Pro' },
+    topic: { id: 1, name: 'Helper Pro' },
     content:
       'Comprehensive guide on using conversation filters to manage chats effectively.',
     created_at: 1736143272,
@@ -72,7 +72,7 @@ export const documentsList = [
   },
   {
     account_id: 2,
-    assistant: { id: 2, name: 'Support Genie' },
+    topic: { id: 2, name: 'Support Genie' },
     content:
       'Step-by-step guide for automating ticket assignments and improving support workflow in Chatwoot.',
     created_at: 1736143273,
@@ -84,7 +84,7 @@ export const documentsList = [
   },
   {
     account_id: 3,
-    assistant: { id: 3, name: 'CRM Topic' },
+    topic: { id: 3, name: 'CRM Topic' },
     content:
       'A detailed guide on managing and organizing customer profiles for better relationship management.',
     created_at: 1736143274,
@@ -96,7 +96,7 @@ export const documentsList = [
   },
   {
     account_id: 4,
-    assistant: { id: 4, name: 'SalesBot' },
+    topic: { id: 4, name: 'SalesBot' },
     content:
       'Learn how to optimize sales tracking and improve your sales forecasting using advanced features.',
     created_at: 1736143275,
@@ -108,7 +108,7 @@ export const documentsList = [
   },
   {
     account_id: 5,
-    assistant: { id: 5, name: 'TicketBot' },
+    topic: { id: 5, name: 'TicketBot' },
     content:
       'How to efficiently create, manage, and resolve tickets in Chatwoot.',
     created_at: 1736143276,
@@ -120,7 +120,7 @@ export const documentsList = [
   },
   {
     account_id: 6,
-    assistant: { id: 6, name: 'Finance Wizard' },
+    topic: { id: 6, name: 'Finance Wizard' },
     content:
       'Detailed guide on how to use financial reporting tools and generate insightful analytics.',
     created_at: 1736143277,
@@ -141,7 +141,7 @@ export const responsesList = [
     id: 87,
     question: 'Why is my Messenger in Chatwoot deactivated?',
     status: 'pending',
-    assistant: {
+    topic: {
       account_id: 1,
       config: { product_name: 'Chatwoot' },
       created_at: 1736033280,
@@ -157,7 +157,7 @@ export const responsesList = [
     created_at: 1736283340,
     id: 88,
     question: 'How do I integrate WhatsApp with Chatwoot?',
-    assistant: {
+    topic: {
       account_id: 2,
       config: { product_name: 'Chatwoot' },
       created_at: 1736033281,
@@ -173,7 +173,7 @@ export const responsesList = [
     created_at: 1736283350,
     id: 89,
     question: 'How can I reset my password in Chatwoot?',
-    assistant: {
+    topic: {
       account_id: 3,
       config: { product_name: 'Chatwoot' },
       created_at: 1736033282,
@@ -189,7 +189,7 @@ export const responsesList = [
     created_at: 1736283360,
     id: 90,
     question: 'How do I enable dark mode in Chatwoot?',
-    assistant: {
+    topic: {
       account_id: 4,
       config: { product_name: 'Chatwoot' },
       created_at: 1736033283,
@@ -205,7 +205,7 @@ export const responsesList = [
     created_at: 1736283370,
     id: 91,
     question: 'How do I add a new team member in Chatwoot?',
-    assistant: {
+    topic: {
       account_id: 5,
       config: { product_name: 'Chatwoot' },
       created_at: 1736033284,
@@ -221,7 +221,7 @@ export const responsesList = [
     created_at: 1736283380,
     id: 92,
     question: 'What are campaigns in Chatwoot?',
-    assistant: {
+    topic: {
       account_id: 6,
       config: { product_name: 'Chatwoot' },
       created_at: 1736033285,

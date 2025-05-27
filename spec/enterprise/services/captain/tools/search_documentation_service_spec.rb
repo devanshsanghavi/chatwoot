@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Captain::Tools::SearchDocumentationService do
-  let(:assistant) { create(:captain_assistant) }
-  let(:service) { described_class.new(assistant) }
+  let(:topic) { create(:captain_topic) }
+  let(:service) { described_class.new(topic) }
   let(:question) { 'How to create a new account?' }
   let(:answer) { 'You can create a new account by clicking on the Sign Up button.' }
   let(:external_link) { 'https://example.com/docs/create-account' }
@@ -39,8 +39,8 @@ RSpec.describe Captain::Tools::SearchDocumentationService do
   describe '#execute' do
     let!(:response) do
       create(
-        :captain_assistant_response,
-        assistant: assistant,
+        :captain_topic_response,
+        topic: topic,
         question: question,
         answer: answer,
         status: 'approved'

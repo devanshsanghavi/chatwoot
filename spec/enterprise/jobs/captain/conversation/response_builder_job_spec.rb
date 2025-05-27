@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Captain::Conversation::ResponseBuilderJob, type: :job do
   let(:account) { create(:account, custom_attributes: { plan_name: 'startups' }) }
   let(:inbox) { create(:inbox, account: account) }
-  let(:assistant) { create(:captain_assistant, account: account) }
-  let(:captain_inbox_association) { create(:captain_inbox, captain_assistant: assistant, inbox: inbox) }
+  let(:topic) { create(:captain_topic, account: account) }
+  let(:captain_inbox_association) { create(:captain_inbox, captain_topic: topic, inbox: inbox) }
 
   describe '#perform' do
     let(:conversation) { create(:conversation, inbox: inbox, account: account) }
@@ -19,14 +19,14 @@ RSpec.describe Captain::Conversation::ResponseBuilderJob, type: :job do
     end
 
     it 'generates and processes response' do
-      described_class.perform_now(conversation, assistant)
+      described_class.perform_now(conversation, topic)
       expect(conversation.messages.count).to eq(2)
       expect(conversation.messages.outgoing.count).to eq(1)
       expect(conversation.messages.last.content).to eq('Hey, welcome to Captain Specs')
     end
 
     it 'increments usage response' do
-      described_class.perform_now(conversation, assistant)
+      described_class.perform_now(conversation, topic)
       account.reload
       expect(account.usage_limits[:captain][:responses][:consumed]).to eq(1)
     end

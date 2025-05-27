@@ -27,12 +27,12 @@ class Api::V1::Accounts::Captain::BulkActionsController < Api::V1::Accounts::Bas
   def process_bulk_action
     case params[:type]
     when 'TopicResponse'
-      handle_assistant_responses
+      handle_topic_responses
     end
   end
 
-  def handle_assistant_responses
-    responses = Current.account.captain_assistant_responses.where(id: params[:ids])
+  def handle_topic_responses
+    responses = Current.account.captain_topic_responses.where(id: params[:ids])
     return unless responses.exists?
 
     case params[:fields][:status]

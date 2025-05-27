@@ -139,7 +139,7 @@ class ConversationApi extends ApiClient {
   }
 
   getInboxTopic(conversationId) {
-    return axios.get(`${this.url}/${conversationId}/inbox_assistant`);
+    return axios.get(`${this.url}/${conversationId}/inbox_topic`);
   }
 }
 

@@ -310,7 +310,7 @@ describe('#getters', () => {
   });
 
   describe('#getCopilotTopic', () => {
-    it('get copilot assistant', () => {
+    it('get copilot topic', () => {
       const state = {
         copilotTopic: {
           id: 1,

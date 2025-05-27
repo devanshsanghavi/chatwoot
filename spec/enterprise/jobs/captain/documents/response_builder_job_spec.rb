@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Captain::Documents::ResponseBuilderJob, type: :job do
-  let(:assistant) { create(:captain_assistant) }
-  let(:document) { create(:captain_document, assistant: assistant) }
+  let(:topic) { create(:captain_topic) }
+  let(:document) { create(:captain_document, topic: topic) }
   let(:faq_generator) { instance_double(Captain::Llm::FaqGeneratorService) }
   let(:faqs) do
     [
@@ -21,7 +21,7 @@ RSpec.describe Captain::Documents::ResponseBuilderJob, type: :job do
   describe '#perform' do
     context 'when processing a document' do
       it 'deletes previous responses' do
-        existing_response = create(:captain_assistant_response, documentable: document)
+        existing_response = create(:captain_topic_response, documentable: document)
 
         described_class.new.perform(document)
 
@@ -39,7 +39,7 @@ RSpec.describe Captain::Documents::ResponseBuilderJob, type: :job do
         first_response = responses.first
         expect(first_response.question).to eq('What is Ruby?')
         expect(first_response.answer).to eq('A programming language')
-        expect(first_response.assistant).to eq(assistant)
+        expect(first_response.topic).to eq(topic)
         expect(first_response.documentable).to eq(document)
       end
     end

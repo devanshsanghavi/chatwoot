@@ -689,7 +689,7 @@ describe('#addMentions', () => {
   });
 
   describe('#getInboxCaptainTopicById', () => {
-    it('fetches inbox assistant by id', async () => {
+    it('fetches inbox topic by id', async () => {
       axios.get.mockResolvedValue({
         data: {
           id: 1,

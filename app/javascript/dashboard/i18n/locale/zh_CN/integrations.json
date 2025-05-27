@@ -357,7 +357,7 @@
       "ASSISTANT": "助手",
       "MESSAGE_PLACEHOLDER": "输入您的消息...",
       "HEADER": "Playground",
-      "DESCRIPTION": "Use this playground to send messages to your assistant and check if it responds accurately, quickly, and in the tone you expect.",
+      "DESCRIPTION": "Use this playground to send messages to your topic and check if it responds accurately, quickly, and in the tone you expect.",
       "CREDIT_NOTE": "Messages sent here will count toward your Captain credits."
     },
     "PAYWALL": {
@@ -408,12 +408,12 @@
         },
         "NAME": {
           "LABEL": "姓名：",
-          "PLACEHOLDER": "Enter assistant name",
+          "PLACEHOLDER": "Enter topic name",
           "ERROR": "The name is required"
         },
         "DESCRIPTION": {
           "LABEL": "描述信息",
-          "PLACEHOLDER": "Enter assistant description",
+          "PLACEHOLDER": "Enter topic description",
           "ERROR": "The description is required"
         },
         "PRODUCT_NAME": {
@@ -435,7 +435,7 @@
         },
         "INSTRUCTIONS": {
           "LABEL": "Instructions",
-          "PLACEHOLDER": "Enter instructions for the assistant"
+          "PLACEHOLDER": "Enter instructions for the topic"
         },
         "FEATURES": {
           "TITLE": "特性",
@@ -447,7 +447,7 @@
         "TITLE": "更新助手",
         "SUCCESS_MESSAGE": "助手已成功更新",
         "ERROR_MESSAGE": "更新助手时出错，请重试",
-        "NOT_FOUND": "Could not find the assistant. Please try again."
+        "NOT_FOUND": "Could not find the topic. Please try again."
       },
       "OPTIONS": {
         "EDIT_ASSISTANT": "编辑助手",

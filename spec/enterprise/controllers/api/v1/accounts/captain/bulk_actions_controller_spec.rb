@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::Accounts::Captain::BulkActions', type: :request do
   let(:account) { create(:account) }
-  let(:assistant) { create(:captain_assistant, account: account) }
+  let(:topic) { create(:captain_topic, account: account) }
   let(:admin) { create(:user, account: account, role: :administrator) }
   let(:agent) { create(:user, account: account, role: :agent) }
   let!(:pending_responses) do
     create_list(
-      :captain_assistant_response,
+      :captain_topic_response,
       2,
-      assistant: assistant,
+      topic: topic,
       account: account,
       status: 'pending'
     )

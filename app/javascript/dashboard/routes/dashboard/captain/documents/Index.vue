@@ -4,7 +4,7 @@ import { useMapGetter, useStore } from 'dashboard/composables/store';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
 
 import DeleteDialog from 'dashboard/components-next/captain/pageComponents/DeleteDialog.vue';
-import DocumentCard from 'dashboard/components-next/captain/assistant/DocumentCard.vue';
+import DocumentCard from 'dashboard/components-next/captain/topic/DocumentCard.vue';
 import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
 import CaptainPaywall from 'dashboard/components-next/captain/pageComponents/Paywall.vue';
 import RelatedResponses from 'dashboard/components-next/captain/pageComponents/document/RelatedResponses.vue';
@@ -18,7 +18,7 @@ const store = useStore();
 
 const uiFlags = useMapGetter('captainDocuments/getUIFlags');
 const documents = useMapGetter('captainDocuments/getRecords');
-const assistants = useMapGetter('captainTopics/getRecords');
+const topics = useMapGetter('captainTopics/getRecords');
 const isFetching = computed(() => uiFlags.value.fetchingList);
 const documentsMeta = useMapGetter('captainDocuments/getMeta');
 const selectedTopic = ref('all');
@@ -36,7 +36,7 @@ const createDocumentDialog = ref(null);
 const relationQuestionDialog = ref(null);
 
 const shouldShowTopicSelector = computed(() => {
-  if (assistants.value.length === 0) return false;
+  if (topics.value.length === 0) return false;
 
   return !isFetching.value;
 });
@@ -76,13 +76,13 @@ const fetchDocuments = (page = 1) => {
   const filterParams = { page };
 
   if (selectedTopic.value !== 'all') {
-    filterParams.assistantId = selectedTopic.value;
+    filterParams.topicId = selectedTopic.value;
   }
   store.dispatch('captainDocuments/get', filterParams);
 };
 
-const handleTopicFilterChange = assistant => {
-  selectedTopic.value = assistant;
+const handleTopicFilterChange = topic => {
+  selectedTopic.value = topic;
   fetchDocuments();
 };
 
@@ -95,7 +95,7 @@ const onDeleteSuccess = () => {
 };
 
 onMounted(() => {
-  if (!assistants.value.length) {
+  if (!topics.value.length) {
     store.dispatch('captainTopics/get');
   }
   fetchDocuments();
@@ -138,7 +138,7 @@ onMounted(() => {
     <template #controls>
       <div v-if="shouldShowTopicSelector" class="mb-4 -mt-3 flex gap-3">
         <TopicSelector
-          :assistant-id="selectedTopic"
+          :topic-id="selectedTopic"
           @update="handleTopicFilterChange"
         />
       </div>
@@ -154,7 +154,7 @@ onMounted(() => {
           :key="doc.id"
           :name="doc.name || doc.external_link"
           :external-link="doc.external_link"
-          :assistant="doc.assistant"
+          :topic="doc.topic"
           :created-at="doc.created_at"
           @action="handleAction"
         />

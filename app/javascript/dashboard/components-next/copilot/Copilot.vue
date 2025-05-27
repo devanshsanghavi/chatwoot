@@ -28,7 +28,7 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  assistants: {
+  topics: {
     type: Array,
     default: () => [],
   },
@@ -42,7 +42,7 @@ const emit = defineEmits(['sendMessage', 'reset', 'setTopic']);
 
 const { t } = useI18n();
 
-const COPILOT_USER_ROLES = ['assistant', 'system'];
+const COPILOT_USER_ROLES = ['topic', 'system'];
 
 const sendMessage = message => {
   emit('sendMessage', message);
@@ -133,10 +133,10 @@ watch(
     <div class="mx-3 mt-px mb-2">
       <div class="flex items-center gap-2 justify-between w-full mb-1">
         <ToggleCopilotTopic
-          v-if="assistants.length"
-          :assistants="assistants"
-          :active-assistant="activeTopic"
-          @set-assistant="$event => emit('setTopic', $event)"
+          v-if="topics.length"
+          :topics="topics"
+          :active-topic="activeTopic"
+          @set-topic="$event => emit('setTopic', $event)"
         />
         <div v-else />
         <button
