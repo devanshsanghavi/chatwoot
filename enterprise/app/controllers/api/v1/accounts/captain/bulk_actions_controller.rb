@@ -1,10 +1,10 @@
 class Api::V1::Accounts::Captain::BulkActionsController < Api::V1::Accounts::BaseController
   before_action :current_account
-  before_action -> { check_authorization(Captain::Assistant) }
+  before_action -> { check_authorization(Captain::Topic) }
   before_action :validate_params
   before_action :type_matches?
 
-  MODEL_TYPE = ['AssistantResponse'].freeze
+  MODEL_TYPE = ['TopicResponse'].freeze
 
   def create
     @responses = process_bulk_action
@@ -26,7 +26,7 @@ class Api::V1::Accounts::Captain::BulkActionsController < Api::V1::Accounts::Bas
 
   def process_bulk_action
     case params[:type]
-    when 'AssistantResponse'
+    when 'TopicResponse'
       handle_assistant_responses
     end
   end

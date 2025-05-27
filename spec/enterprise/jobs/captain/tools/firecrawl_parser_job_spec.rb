@@ -51,7 +51,7 @@ RSpec.describe Captain::Tools::FirecrawlParserJob, type: :job do
 
     context 'when an error occurs' do
       it 'raises an error with a descriptive message' do
-        allow(Captain::Assistant).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
+        allow(Captain::Topic).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
 
         expect do
           described_class.perform_now(assistant_id: -1, payload: payload)

@@ -17,7 +17,7 @@ const emit = defineEmits(['update']);
 const { t } = useI18n();
 const isFilterOpen = ref(false);
 
-const assistants = useMapGetter('captainAssistants/getRecords');
+const assistants = useMapGetter('captainTopics/getRecords');
 const assistantOptions = computed(() => [
   {
     label: t(`CAPTAIN.RESPONSES.FILTER.ALL_ASSISTANTS`),
@@ -31,7 +31,7 @@ const assistantOptions = computed(() => [
   })),
 ]);
 
-const selectedAssistantLabel = computed(() => {
+const selectedTopicLabel = computed(() => {
   const assistant = assistantOptions.value.find(
     option => option.value === props.assistantId
   );
@@ -40,7 +40,7 @@ const selectedAssistantLabel = computed(() => {
   });
 });
 
-const handleAssistantFilterChange = ({ value }) => {
+const handleTopicFilterChange = ({ value }) => {
   isFilterOpen.value = false;
   emit('update', value);
 };
@@ -49,7 +49,7 @@ const handleAssistantFilterChange = ({ value }) => {
 <template>
   <OnClickOutside @trigger="isFilterOpen = false">
     <Button
-      :label="selectedAssistantLabel"
+      :label="selectedTopicLabel"
       icon="i-lucide-chevron-down"
       size="sm"
       color="slate"
@@ -62,7 +62,7 @@ const handleAssistantFilterChange = ({ value }) => {
       v-if="isFilterOpen"
       :menu-items="assistantOptions"
       class="mt-2"
-      @action="handleAssistantFilterChange"
+      @action="handleTopicFilterChange"
     />
   </OnClickOutside>
 </template>

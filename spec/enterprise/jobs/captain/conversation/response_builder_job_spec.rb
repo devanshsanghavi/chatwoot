@@ -8,13 +8,13 @@ RSpec.describe Captain::Conversation::ResponseBuilderJob, type: :job do
 
   describe '#perform' do
     let(:conversation) { create(:conversation, inbox: inbox, account: account) }
-    let(:mock_llm_chat_service) { instance_double(Captain::Llm::AssistantChatService) }
+    let(:mock_llm_chat_service) { instance_double(Captain::Llm::TopicChatService) }
 
     before do
       create(:message, conversation: conversation, content: 'Hello', message_type: :incoming)
 
       allow(inbox).to receive(:captain_active?).and_return(true)
-      allow(Captain::Llm::AssistantChatService).to receive(:new).and_return(mock_llm_chat_service)
+      allow(Captain::Llm::TopicChatService).to receive(:new).and_return(mock_llm_chat_service)
       allow(mock_llm_chat_service).to receive(:generate_response).and_return({ 'response' => 'Hey, welcome to Captain Specs' })
     end
 

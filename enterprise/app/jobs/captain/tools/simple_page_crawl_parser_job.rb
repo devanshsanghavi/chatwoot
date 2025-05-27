@@ -2,7 +2,7 @@ class Captain::Tools::SimplePageCrawlParserJob < ApplicationJob
   queue_as :low
 
   def perform(assistant_id:, page_link:)
-    assistant = Captain::Assistant.find(assistant_id)
+    assistant = Captain::Topic.find(assistant_id)
     account = assistant.account
 
     if limit_exceeded?(account)

@@ -5,10 +5,10 @@ import { useAlert } from 'dashboard/composables';
 import { useI18n } from 'vue-i18n';
 
 import Dialog from 'dashboard/components-next/dialog/Dialog.vue';
-import AssistantForm from './AssistantForm.vue';
+import TopicForm from './TopicForm.vue';
 
 const props = defineProps({
-  selectedAssistant: {
+  selectedTopic: {
     type: Object,
     default: () => ({}),
   },
@@ -25,9 +25,9 @@ const store = useStore();
 const dialogRef = ref(null);
 const assistantForm = ref(null);
 
-const updateAssistant = assistantDetails =>
-  store.dispatch('captainAssistants/update', {
-    id: props.selectedAssistant.id,
+const updateTopic = assistantDetails =>
+  store.dispatch('captainTopics/update', {
+    id: props.selectedTopic.id,
     ...assistantDetails,
   });
 
@@ -35,15 +35,15 @@ const i18nKey = computed(
   () => `CAPTAIN.ASSISTANTS.${props.type.toUpperCase()}`
 );
 
-const createAssistant = assistantDetails =>
-  store.dispatch('captainAssistants/create', assistantDetails);
+const createTopic = assistantDetails =>
+  store.dispatch('captainTopics/create', assistantDetails);
 
-const handleSubmit = async updatedAssistant => {
+const handleSubmit = async updatedTopic => {
   try {
     if (props.type === 'edit') {
-      await updateAssistant(updatedAssistant);
+      await updateTopic(updatedTopic);
     } else {
-      await createAssistant(updatedAssistant);
+      await createTopic(updatedTopic);
     }
     useAlert(t(`${i18nKey.value}.SUCCESS_MESSAGE`));
     dialogRef.value.close();
@@ -75,10 +75,10 @@ defineExpose({ dialogRef });
     overflow-y-auto
     @close="handleClose"
   >
-    <AssistantForm
+    <TopicForm
       ref="assistantForm"
       :mode="type"
-      :assistant="selectedAssistant"
+      :assistant="selectedTopic"
       @submit="handleSubmit"
       @cancel="handleCancel"
     />

@@ -557,16 +557,16 @@ describe('#mutations', () => {
 
   describe('#SET_INBOX_CAPTAIN_ASSISTANT', () => {
     it('set inbox captain assistant', () => {
-      const state = { copilotAssistant: {} };
+      const state = { copilotTopic: {} };
       const data = {
         assistant: {
           id: 1,
-          name: 'Assistant',
-          description: 'Assistant description',
+          name: 'Topic',
+          description: 'Topic description',
         },
       };
       mutations[types.SET_INBOX_CAPTAIN_ASSISTANT](state, data);
-      expect(state.copilotAssistant).toEqual(data.assistant);
+      expect(state.copilotTopic).toEqual(data.assistant);
     });
   });
 

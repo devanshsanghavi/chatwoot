@@ -3,12 +3,12 @@ import { computed, onMounted, ref, nextTick } from 'vue';
 import { useMapGetter, useStore } from 'dashboard/composables/store';
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
 
-import AssistantCard from 'dashboard/components-next/captain/assistant/AssistantCard.vue';
+import TopicCard from 'dashboard/components-next/captain/assistant/TopicCard.vue';
 import DeleteDialog from 'dashboard/components-next/captain/pageComponents/DeleteDialog.vue';
 import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
 import CaptainPaywall from 'dashboard/components-next/captain/pageComponents/Paywall.vue';
-import CreateAssistantDialog from 'dashboard/components-next/captain/pageComponents/assistant/CreateAssistantDialog.vue';
-import AssistantPageEmptyState from 'dashboard/components-next/captain/pageComponents/emptyStates/AssistantPageEmptyState.vue';
+import CreateTopicDialog from 'dashboard/components-next/captain/pageComponents/assistant/CreateTopicDialog.vue';
+import TopicPageEmptyState from 'dashboard/components-next/captain/pageComponents/emptyStates/TopicPageEmptyState.vue';
 import FeatureSpotlightPopover from 'dashboard/components-next/feature-spotlight/FeatureSpotlightPopover.vue';
 import LimitBanner from 'dashboard/components-next/captain/pageComponents/response/LimitBanner.vue';
 import { useRouter } from 'vue-router';
@@ -17,42 +17,40 @@ const router = useRouter();
 
 const store = useStore();
 const dialogType = ref('');
-const uiFlags = useMapGetter('captainAssistants/getUIFlags');
-const assistants = useMapGetter('captainAssistants/getRecords');
+const uiFlags = useMapGetter('captainTopics/getUIFlags');
+const assistants = useMapGetter('captainTopics/getRecords');
 const isFetching = computed(() => uiFlags.value.fetchingList);
 
-const selectedAssistant = ref(null);
-const deleteAssistantDialog = ref(null);
+const selectedTopic = ref(null);
+const deleteTopicDialog = ref(null);
 
 const handleDelete = () => {
-  deleteAssistantDialog.value.dialogRef.open();
+  deleteTopicDialog.value.dialogRef.open();
 };
 
-const createAssistantDialog = ref(null);
+const createTopicDialog = ref(null);
 
 const handleCreate = () => {
   dialogType.value = 'create';
-  nextTick(() => createAssistantDialog.value.dialogRef.open());
+  nextTick(() => createTopicDialog.value.dialogRef.open());
 };
 
 const handleEdit = () => {
   router.push({
     name: 'captain_assistants_edit',
-    params: { assistantId: selectedAssistant.value.id },
+    params: { assistantId: selectedTopic.value.id },
   });
 };
 
 const handleViewConnectedInboxes = () => {
   router.push({
     name: 'captain_assistants_inboxes_index',
-    params: { assistantId: selectedAssistant.value.id },
+    params: { assistantId: selectedTopic.value.id },
   });
 };
 
 const handleAction = ({ action, id }) => {
-  selectedAssistant.value = assistants.value.find(
-    assistant => id === assistant.id
-  );
+  selectedTopic.value = assistants.value.find(assistant => id === assistant.id);
   nextTick(() => {
     if (action === 'delete') {
       handleDelete();
@@ -68,10 +66,10 @@ const handleAction = ({ action, id }) => {
 
 const handleCreateClose = () => {
   dialogType.value = '';
-  selectedAssistant.value = null;
+  selectedTopic.value = null;
 };
 
-onMounted(() => store.dispatch('captainAssistants/get'));
+onMounted(() => store.dispatch('captainTopics/get'));
 </script>
 
 <template>
@@ -96,7 +94,7 @@ onMounted(() => store.dispatch('captainAssistants/get'));
       />
     </template>
     <template #emptyState>
-      <AssistantPageEmptyState @click="handleCreate" />
+      <TopicPageEmptyState @click="handleCreate" />
     </template>
 
     <template #paywall>
@@ -107,7 +105,7 @@ onMounted(() => store.dispatch('captainAssistants/get'));
       <LimitBanner class="mb-5" />
 
       <div class="flex flex-col gap-4">
-        <AssistantCard
+        <TopicCard
           v-for="assistant in assistants"
           :id="assistant.id"
           :key="assistant.id"
@@ -121,17 +119,17 @@ onMounted(() => store.dispatch('captainAssistants/get'));
     </template>
 
     <DeleteDialog
-      v-if="selectedAssistant"
-      ref="deleteAssistantDialog"
-      :entity="selectedAssistant"
-      type="Assistants"
+      v-if="selectedTopic"
+      ref="deleteTopicDialog"
+      :entity="selectedTopic"
+      type="Topics"
     />
 
-    <CreateAssistantDialog
+    <CreateTopicDialog
       v-if="dialogType"
-      ref="createAssistantDialog"
+      ref="createTopicDialog"
       :type="dialogType"
-      :selected-assistant="selectedAssistant"
+      :selected-assistant="selectedTopic"
       @close="handleCreateClose"
     />
   </PageLayout>

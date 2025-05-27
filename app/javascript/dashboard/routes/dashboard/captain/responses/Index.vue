@@ -14,7 +14,7 @@ import DeleteDialog from 'dashboard/components-next/captain/pageComponents/Delet
 import BulkDeleteDialog from 'dashboard/components-next/captain/pageComponents/BulkDeleteDialog.vue';
 import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
 import CaptainPaywall from 'dashboard/components-next/captain/pageComponents/Paywall.vue';
-import AssistantSelector from 'dashboard/components-next/captain/pageComponents/AssistantSelector.vue';
+import TopicSelector from 'dashboard/components-next/captain/pageComponents/TopicSelector.vue';
 import ResponseCard from 'dashboard/components-next/captain/assistant/ResponseCard.vue';
 import CreateResponseDialog from 'dashboard/components-next/captain/pageComponents/response/CreateResponseDialog.vue';
 import ResponsePageEmptyState from 'dashboard/components-next/captain/pageComponents/emptyStates/ResponsePageEmptyState.vue';
@@ -24,7 +24,7 @@ import LimitBanner from 'dashboard/components-next/captain/pageComponents/respon
 const router = useRouter();
 const store = useStore();
 const uiFlags = useMapGetter('captainResponses/getUIFlags');
-const assistants = useMapGetter('captainAssistants/getRecords');
+const assistants = useMapGetter('captainTopics/getRecords');
 const responseMeta = useMapGetter('captainResponses/getMeta');
 const responses = useMapGetter('captainResponses/getRecords');
 const isFetching = computed(() => uiFlags.value.fetchingList);
@@ -34,7 +34,7 @@ const deleteDialog = ref(null);
 const bulkDeleteDialog = ref(null);
 
 const selectedStatus = ref('all');
-const selectedAssistant = ref('all');
+const selectedTopic = ref('all');
 const dialogType = ref('');
 const { t } = useI18n();
 
@@ -127,8 +127,8 @@ const fetchResponses = (page = 1) => {
   if (selectedStatus.value !== 'all') {
     filterParams.status = selectedStatus.value;
   }
-  if (selectedAssistant.value !== 'all') {
-    filterParams.assistantId = selectedAssistant.value;
+  if (selectedTopic.value !== 'all') {
+    filterParams.assistantId = selectedTopic.value;
   }
   store.dispatch('captainResponses/get', filterParams);
 };
@@ -223,13 +223,13 @@ const handleStatusFilterChange = ({ value }) => {
   fetchResponses();
 };
 
-const handleAssistantFilterChange = assistant => {
-  selectedAssistant.value = assistant;
+const handleTopicFilterChange = assistant => {
+  selectedTopic.value = assistant;
   fetchResponses();
 };
 
 onMounted(() => {
-  store.dispatch('captainAssistants/get');
+  store.dispatch('captainTopics/get');
   fetchResponses();
 });
 </script>
@@ -291,9 +291,9 @@ onMounted(() => {
               @action="handleStatusFilterChange"
             />
           </OnClickOutside>
-          <AssistantSelector
-            :assistant-id="selectedAssistant"
-            @update="handleAssistantFilterChange"
+          <TopicSelector
+            :assistant-id="selectedTopic"
+            @update="handleTopicFilterChange"
           />
         </div>
 

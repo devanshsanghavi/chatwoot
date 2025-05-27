@@ -1,7 +1,7 @@
 <script setup>
 import EmptyStateLayout from 'dashboard/components-next/EmptyStateLayout.vue';
 import Button from 'dashboard/components-next/button/Button.vue';
-import AssistantCard from 'dashboard/components-next/captain/assistant/AssistantCard.vue';
+import TopicCard from 'dashboard/components-next/captain/assistant/TopicCard.vue';
 import FeatureSpotlight from 'dashboard/components-next/feature-spotlight/FeatureSpotlight.vue';
 import { assistantsList } from 'dashboard/components-next/captain/pageComponents/emptyStates/captainEmptyStateContent.js';
 
@@ -28,7 +28,7 @@ const onClick = () => {
   >
     <template #empty-state-item>
       <div class="grid grid-cols-1 gap-4 p-px overflow-hidden">
-        <AssistantCard
+        <TopicCard
           v-for="(assistant, index) in assistantsList.slice(0, 5)"
           :id="assistant.id"
           :key="`assistant-${index}`"

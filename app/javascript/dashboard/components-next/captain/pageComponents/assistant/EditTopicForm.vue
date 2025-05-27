@@ -27,7 +27,7 @@ const emit = defineEmits(['submit']);
 const { t } = useI18n();
 
 const formState = {
-  uiFlags: useMapGetter('captainAssistants/getUIFlags'),
+  uiFlags: useMapGetter('captainTopics/getUIFlags'),
 };
 
 const initialState = {
@@ -75,7 +75,7 @@ const formErrors = computed(() => ({
   instructions: getErrorMessage('instructions'),
 }));
 
-const updateStateFromAssistant = assistant => {
+const updateStateFromTopic = assistant => {
   const { config = {} } = assistant;
   state.name = assistant.name;
   state.description = assistant.description;
@@ -160,9 +160,9 @@ const handleFeaturesUpdate = () => {
 
 watch(
   () => props.assistant,
-  newAssistant => {
-    if (props.mode === 'edit' && newAssistant) {
-      updateStateFromAssistant(newAssistant);
+  newTopic => {
+    if (props.mode === 'edit' && newTopic) {
+      updateStateFromTopic(newTopic);
     }
   },
   { immediate: true }

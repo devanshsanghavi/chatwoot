@@ -19,37 +19,37 @@ const props = defineProps({
 
 const store = useStore();
 const currentUser = useMapGetter('getCurrentUser');
-const assistants = useMapGetter('captainAssistants/getRecords');
-const inboxAssistant = useMapGetter('getCopilotAssistant');
+const assistants = useMapGetter('captainTopics/getRecords');
+const inboxTopic = useMapGetter('getCopilotTopic');
 const { uiSettings, updateUISettings } = useUISettings();
 
 const messages = ref([]);
 const isCaptainTyping = ref(false);
-const selectedAssistantId = ref(null);
+const selectedTopicId = ref(null);
 
-const activeAssistant = computed(() => {
+const activeTopic = computed(() => {
   const preferredId = uiSettings.value.preferred_captain_assistant_id;
 
   // If the user has selected a specific assistant, it takes first preference for Copilot.
   if (preferredId) {
-    const preferredAssistant = assistants.value.find(a => a.id === preferredId);
+    const preferredTopic = assistants.value.find(a => a.id === preferredId);
     // Return the preferred assistant if found, otherwise continue to next cases
-    if (preferredAssistant) return preferredAssistant;
+    if (preferredTopic) return preferredTopic;
   }
 
   // If the above is not available, the assistant connected to the inbox takes preference.
-  if (inboxAssistant.value) {
-    const inboxMatchedAssistant = assistants.value.find(
-      a => a.id === inboxAssistant.value.id
+  if (inboxTopic.value) {
+    const inboxMatchedTopic = assistants.value.find(
+      a => a.id === inboxTopic.value.id
     );
-    if (inboxMatchedAssistant) return inboxMatchedAssistant;
+    if (inboxMatchedTopic) return inboxMatchedTopic;
   }
   // If neither of the above is available, the first assistant in the account takes preference.
   return assistants.value[0];
 });
 
-const setAssistant = async assistant => {
-  selectedAssistantId.value = assistant.id;
+const setTopic = async assistant => {
+  selectedTopicId.value = assistant.id;
   await updateUISettings({
     preferred_captain_assistant_id: assistant.id,
   });
@@ -79,7 +79,7 @@ const sendMessage = async message => {
           }))
           .slice(0, -1),
         message,
-        assistant_id: selectedAssistantId.value,
+        assistant_id: selectedTopicId.value,
       }
     );
     messages.value.push({
@@ -96,13 +96,13 @@ const sendMessage = async message => {
 };
 
 onMounted(() => {
-  store.dispatch('captainAssistants/get');
+  store.dispatch('captainTopics/get');
 });
 
 watchEffect(() => {
   if (props.conversationId) {
-    store.dispatch('getInboxCaptainAssistantById', props.conversationId);
-    selectedAssistantId.value = activeAssistant.value?.id;
+    store.dispatch('getInboxCaptainTopicById', props.conversationId);
+    selectedTopicId.value = activeTopic.value?.id;
   }
 });
 </script>
@@ -114,8 +114,8 @@ watchEffect(() => {
     :is-captain-typing="isCaptainTyping"
     :conversation-inbox-type="conversationInboxType"
     :assistants="assistants"
-    :active-assistant="activeAssistant"
-    @set-assistant="setAssistant"
+    :active-assistant="activeTopic"
+    @set-assistant="setTopic"
     @send-message="sendMessage"
     @reset="handleReset"
   />

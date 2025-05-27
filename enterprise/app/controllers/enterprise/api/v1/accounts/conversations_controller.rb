@@ -10,7 +10,7 @@ module Enterprise::Api::V1::Accounts::ConversationsController
 
     # Find the assistant either by ID or from inbox
     assistant = if assistant_id.present?
-                  Captain::Assistant.find_by(id: assistant_id, account_id: Current.account.id)
+                  Captain::Topic.find_by(id: assistant_id, account_id: Current.account.id)
                 else
                   @conversation.inbox.captain_assistant
                 end

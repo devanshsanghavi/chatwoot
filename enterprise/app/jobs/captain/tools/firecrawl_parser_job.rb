@@ -2,7 +2,7 @@ class Captain::Tools::FirecrawlParserJob < ApplicationJob
   queue_as :low
 
   def perform(assistant_id:, payload:)
-    assistant = Captain::Assistant.find(assistant_id)
+    assistant = Captain::Topic.find(assistant_id)
     metadata = payload[:metadata]
 
     document = assistant.documents.find_or_initialize_by(

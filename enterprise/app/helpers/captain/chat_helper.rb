@@ -18,7 +18,7 @@ module Captain::ChatHelper
   private
 
   def handle_response(response)
-    Rails.logger.debug { "#{self.class.name} Assistant: #{@assistant.id}, Received response #{response}" }
+    Rails.logger.debug { "#{self.class.name} Topic: #{@assistant.id}, Received response #{response}" }
     message = response.dig('choices', 0, 'message')
     if message['tool_calls']
       process_tool_calls(message['tool_calls'])
@@ -78,7 +78,7 @@ module Captain::ChatHelper
 
   def log_chat_completion_request
     Rails.logger.info(
-      "#{self.class.name} Assistant: #{@assistant.id}, Requesting chat completion
+      "#{self.class.name} Topic: #{@assistant.id}, Requesting chat completion
       for messages #{@messages} with #{@tool_registry&.registered_tools&.length || 0} tools
       "
     )

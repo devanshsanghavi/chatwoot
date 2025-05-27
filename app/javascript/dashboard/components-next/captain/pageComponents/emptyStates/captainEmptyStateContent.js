@@ -17,7 +17,7 @@ export const assistantsList = [
     description:
       'Helps streamline customer relationship management by organizing contacts, automating follow-ups, and providing insights.',
     id: 5,
-    name: 'CRM Assistant',
+    name: 'CRM Topic',
   },
   {
     account_id: 4,
@@ -48,7 +48,7 @@ export const assistantsList = [
   },
   {
     account_id: 8,
-    config: { product_name: 'HR Assistant' },
+    config: { product_name: 'HR Topic' },
     created_at: 1736033567,
     description:
       'Streamlines HR operations including employee management, payroll, and recruitment processes.',
@@ -84,7 +84,7 @@ export const documentsList = [
   },
   {
     account_id: 3,
-    assistant: { id: 3, name: 'CRM Assistant' },
+    assistant: { id: 3, name: 'CRM Topic' },
     content:
       'A detailed guide on managing and organizing customer profiles for better relationship management.',
     created_at: 1736143274,
@@ -147,7 +147,7 @@ export const responsesList = [
       created_at: 1736033280,
       description: 'Assists with general queries and system-wide issues.',
       id: 1,
-      name: 'Assistant 2',
+      name: 'Topic 2',
     },
   },
   {
@@ -163,7 +163,7 @@ export const responsesList = [
       created_at: 1736033281,
       description: 'Helps with integration and setup-related inquiries.',
       id: 2,
-      name: 'Assistant 3',
+      name: 'Topic 3',
     },
   },
   {
@@ -179,7 +179,7 @@ export const responsesList = [
       created_at: 1736033282,
       description: 'Handles account management and recovery support.',
       id: 3,
-      name: 'Assistant 4',
+      name: 'Topic 4',
     },
   },
   {
@@ -195,7 +195,7 @@ export const responsesList = [
       created_at: 1736033283,
       description: 'Helps with UI and theme-related inquiries.',
       id: 4,
-      name: 'Assistant 5',
+      name: 'Topic 5',
     },
   },
   {
@@ -211,7 +211,7 @@ export const responsesList = [
       created_at: 1736033284,
       description: 'Supports team management and user access-related queries.',
       id: 5,
-      name: 'Assistant 6',
+      name: 'Topic 6',
     },
   },
   {
@@ -228,7 +228,7 @@ export const responsesList = [
       description:
         'Specialized in marketing, campaign management, and messaging strategies.',
       id: 6,
-      name: 'Assistant 7',
+      name: 'Topic 7',
     },
   },
 ];

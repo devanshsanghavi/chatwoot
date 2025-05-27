@@ -23,8 +23,8 @@ class Captain::Document < ApplicationRecord
   class LimitExceededError < StandardError; end
   self.table_name = 'captain_documents'
 
-  belongs_to :assistant, class_name: 'Captain::Assistant'
-  has_many :responses, class_name: 'Captain::AssistantResponse', dependent: :destroy, as: :documentable
+  belongs_to :assistant, class_name: 'Captain::Topic'
+  has_many :responses, class_name: 'Captain::TopicResponse', dependent: :destroy, as: :documentable
   belongs_to :account
 
   validates :external_link, presence: true

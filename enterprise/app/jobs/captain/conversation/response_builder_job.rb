@@ -22,7 +22,7 @@ class Captain::Conversation::ResponseBuilderJob < ApplicationJob
   delegate :account, :inbox, to: :@conversation
 
   def generate_and_process_response
-    @response = Captain::Llm::AssistantChatService.new(assistant: @assistant).generate_response(
+    @response = Captain::Llm::TopicChatService.new(assistant: @assistant).generate_response(
       @conversation.messages.incoming.last.content,
       collect_previous_messages
     )

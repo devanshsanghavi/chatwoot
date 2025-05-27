@@ -9,7 +9,7 @@ import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
 import CaptainPaywall from 'dashboard/components-next/captain/pageComponents/Paywall.vue';
 import RelatedResponses from 'dashboard/components-next/captain/pageComponents/document/RelatedResponses.vue';
 import CreateDocumentDialog from 'dashboard/components-next/captain/pageComponents/document/CreateDocumentDialog.vue';
-import AssistantSelector from 'dashboard/components-next/captain/pageComponents/AssistantSelector.vue';
+import TopicSelector from 'dashboard/components-next/captain/pageComponents/TopicSelector.vue';
 import DocumentPageEmptyState from 'dashboard/components-next/captain/pageComponents/emptyStates/DocumentPageEmptyState.vue';
 import FeatureSpotlightPopover from 'dashboard/components-next/feature-spotlight/FeatureSpotlightPopover.vue';
 import LimitBanner from 'dashboard/components-next/captain/pageComponents/document/LimitBanner.vue';
@@ -18,10 +18,10 @@ const store = useStore();
 
 const uiFlags = useMapGetter('captainDocuments/getUIFlags');
 const documents = useMapGetter('captainDocuments/getRecords');
-const assistants = useMapGetter('captainAssistants/getRecords');
+const assistants = useMapGetter('captainTopics/getRecords');
 const isFetching = computed(() => uiFlags.value.fetchingList);
 const documentsMeta = useMapGetter('captainDocuments/getMeta');
-const selectedAssistant = ref('all');
+const selectedTopic = ref('all');
 
 const selectedDocument = ref(null);
 const deleteDocumentDialog = ref(null);
@@ -35,7 +35,7 @@ const showCreateDialog = ref(false);
 const createDocumentDialog = ref(null);
 const relationQuestionDialog = ref(null);
 
-const shouldShowAssistantSelector = computed(() => {
+const shouldShowTopicSelector = computed(() => {
   if (assistants.value.length === 0) return false;
 
   return !isFetching.value;
@@ -75,14 +75,14 @@ const handleAction = ({ action, id }) => {
 const fetchDocuments = (page = 1) => {
   const filterParams = { page };
 
-  if (selectedAssistant.value !== 'all') {
-    filterParams.assistantId = selectedAssistant.value;
+  if (selectedTopic.value !== 'all') {
+    filterParams.assistantId = selectedTopic.value;
   }
   store.dispatch('captainDocuments/get', filterParams);
 };
 
-const handleAssistantFilterChange = assistant => {
-  selectedAssistant.value = assistant;
+const handleTopicFilterChange = assistant => {
+  selectedTopic.value = assistant;
   fetchDocuments();
 };
 
@@ -96,7 +96,7 @@ const onDeleteSuccess = () => {
 
 onMounted(() => {
   if (!assistants.value.length) {
-    store.dispatch('captainAssistants/get');
+    store.dispatch('captainTopics/get');
   }
   fetchDocuments();
 });
@@ -136,10 +136,10 @@ onMounted(() => {
     </template>
 
     <template #controls>
-      <div v-if="shouldShowAssistantSelector" class="mb-4 -mt-3 flex gap-3">
-        <AssistantSelector
-          :assistant-id="selectedAssistant"
-          @update="handleAssistantFilterChange"
+      <div v-if="shouldShowTopicSelector" class="mb-4 -mt-3 flex gap-3">
+        <TopicSelector
+          :assistant-id="selectedTopic"
+          @update="handleTopicFilterChange"
         />
       </div>
     </template>

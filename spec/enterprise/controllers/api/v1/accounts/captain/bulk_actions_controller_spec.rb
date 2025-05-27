@@ -23,7 +23,7 @@ RSpec.describe 'Api::V1::Accounts::Captain::BulkActions', type: :request do
     context 'when approving responses' do
       let(:valid_params) do
         {
-          type: 'AssistantResponse',
+          type: 'TopicResponse',
           ids: pending_responses.map(&:id),
           fields: { status: 'approve' }
         }
@@ -49,7 +49,7 @@ RSpec.describe 'Api::V1::Accounts::Captain::BulkActions', type: :request do
     context 'when deleting responses' do
       let(:delete_params) do
         {
-          type: 'AssistantResponse',
+          type: 'TopicResponse',
           ids: pending_responses.map(&:id),
           fields: { status: 'delete' }
         }
@@ -61,7 +61,7 @@ RSpec.describe 'Api::V1::Accounts::Captain::BulkActions', type: :request do
                params: delete_params,
                headers: admin.create_new_auth_token,
                as: :json
-        end.to change(Captain::AssistantResponse, :count).by(-2)
+        end.to change(Captain::TopicResponse, :count).by(-2)
 
         expect(response).to have_http_status(:ok)
         expect(json_response).to eq([])
@@ -101,7 +101,7 @@ RSpec.describe 'Api::V1::Accounts::Captain::BulkActions', type: :request do
     context 'with missing parameters' do
       let(:missing_params) do
         {
-          type: 'AssistantResponse',
+          type: 'TopicResponse',
           fields: { status: 'approve' }
         }
       end
@@ -127,7 +127,7 @@ RSpec.describe 'Api::V1::Accounts::Captain::BulkActions', type: :request do
 
       it 'returns unauthorized status' do
         post "/api/v1/accounts/#{account.id}/captain/bulk_actions",
-             params: { type: 'AssistantResponse', ids: [1], fields: { status: 'approve' } },
+             params: { type: 'TopicResponse', ids: [1], fields: { status: 'approve' } },
              headers: unauthorized_user.create_new_auth_token,
              as: :json
 

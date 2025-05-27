@@ -20,7 +20,7 @@ class Enterprise::Webhooks::FirecrawlController < ActionController::API
   end
 
   def assistant
-    @assistant ||= Captain::Assistant.find(permitted_params[:assistant_id])
+    @assistant ||= Captain::Topic.find(permitted_params[:assistant_id])
   end
 
   def assistant_token

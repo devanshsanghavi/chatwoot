@@ -26,7 +26,7 @@ const emit = defineEmits(['submit', 'cancel']);
 const { t } = useI18n();
 
 const formState = {
-  uiFlags: useMapGetter('captainAssistants/getUIFlags'),
+  uiFlags: useMapGetter('captainTopics/getUIFlags'),
 };
 
 const initialState = {
@@ -63,7 +63,7 @@ const formErrors = computed(() => ({
 
 const handleCancel = () => emit('cancel');
 
-const prepareAssistantDetails = () => ({
+const prepareTopicDetails = () => ({
   name: state.name,
   description: state.description,
   config: {
@@ -79,10 +79,10 @@ const handleSubmit = async () => {
     return;
   }
 
-  emit('submit', prepareAssistantDetails());
+  emit('submit', prepareTopicDetails());
 };
 
-const updateStateFromAssistant = assistant => {
+const updateStateFromTopic = assistant => {
   if (!assistant) return;
 
   const { name, description, config } = assistant;
@@ -98,9 +98,9 @@ const updateStateFromAssistant = assistant => {
 
 watch(
   () => props.assistant,
-  newAssistant => {
-    if (props.mode === 'edit' && newAssistant) {
-      updateStateFromAssistant(newAssistant);
+  newTopic => {
+    if (props.mode === 'edit' && newTopic) {
+      updateStateFromTopic(newTopic);
     }
   },
   { immediate: true }

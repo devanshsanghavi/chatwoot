@@ -18,9 +18,9 @@ import InboxPageEmptyState from 'dashboard/components-next/captain/pageComponent
 const store = useStore();
 const dialogType = ref('');
 const route = useRoute();
-const assistantUiFlags = useMapGetter('captainAssistants/getUIFlags');
+const assistantUiFlags = useMapGetter('captainTopics/getUIFlags');
 const uiFlags = useMapGetter('captainInboxes/getUIFlags');
-const isFetchingAssistant = computed(() => assistantUiFlags.value.fetchingItem);
+const isFetchingTopic = computed(() => assistantUiFlags.value.fetchingItem);
 const isFetching = computed(() => uiFlags.value.fetchingList);
 
 const captainInboxes = useMapGetter('captainInboxes/getRecords');
@@ -55,9 +55,9 @@ const handleCreateClose = () => {
 const getters = useStoreGetters();
 const assistantId = Number(route.params.assistantId);
 const assistant = computed(() =>
-  getters['captainAssistants/getRecord'].value(assistantId)
+  getters['captainTopics/getRecord'].value(assistantId)
 );
-onBeforeMount(() => store.dispatch('captainAssistants/show', assistantId));
+onBeforeMount(() => store.dispatch('captainTopics/show', assistantId));
 
 onMounted(() =>
   store.dispatch('captainInboxes/get', {
@@ -70,13 +70,13 @@ onMounted(() =>
   <PageLayout
     :button-label="$t('CAPTAIN.INBOXES.ADD_NEW')"
     :button-policy="['administrator']"
-    :is-fetching="isFetchingAssistant || isFetching"
+    :is-fetching="isFetchingTopic || isFetching"
     :is-empty="!captainInboxes.length"
     :show-pagination-footer="false"
     :feature-flag="FEATURE_FLAGS.CAPTAIN"
     @click="handleCreate"
   >
-    <template v-if="!isFetchingAssistant" #headerTitle>
+    <template v-if="!isFetchingTopic" #headerTitle>
       <div class="flex flex-row items-center gap-4">
         <BackButton compact />
         <span

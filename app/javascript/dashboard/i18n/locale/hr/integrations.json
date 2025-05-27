@@ -336,7 +336,7 @@
       "YOU": "Vi",
       "USE": "Use this",
       "RESET": "Reset",
-      "SELECT_ASSISTANT": "Select Assistant",
+      "SELECT_ASSISTANT": "Select Topic",
       "PROMPTS": {
         "SUMMARIZE": {
           "LABEL": "Summarize this conversation",
@@ -354,7 +354,7 @@
     },
     "PLAYGROUND": {
       "USER": "Vi",
-      "ASSISTANT": "Assistant",
+      "ASSISTANT": "Topic",
       "MESSAGE_PLACEHOLDER": "Unesite svoju poruku...",
       "HEADER": "Playground",
       "DESCRIPTION": "Use this playground to send messages to your assistant and check if it responds accurately, quickly, and in the tone you expect.",
@@ -382,7 +382,7 @@
       "EDIT": "Ažuriraj"
     },
     "ASSISTANTS": {
-      "HEADER": "Assistants",
+      "HEADER": "Topics",
       "ADD_NEW": "Create a new assistant",
       "DELETE": {
         "TITLE": "Are you sure to delete the assistant?",
@@ -450,16 +450,16 @@
         "NOT_FOUND": "Could not find the assistant. Please try again."
       },
       "OPTIONS": {
-        "EDIT_ASSISTANT": "Edit Assistant",
-        "DELETE_ASSISTANT": "Delete Assistant",
+        "EDIT_ASSISTANT": "Edit Topic",
+        "DELETE_ASSISTANT": "Delete Topic",
         "VIEW_CONNECTED_INBOXES": "View connected inboxes"
       },
       "EMPTY_STATE": {
         "TITLE": "No assistants available",
         "SUBTITLE": "Create an assistant to provide quick and accurate responses to your users. It can learn from your help articles and past conversations.",
         "FEATURE_SPOTLIGHT": {
-          "TITLE": "Captain Assistant",
-          "NOTE": "Captain Assistant engages directly with customers, learns from your help docs and past conversations, and delivers instant, accurate responses. It handles the initial queries, providing quick resolutions before  transferring to an agent when needed."
+          "TITLE": "Captain Topic",
+          "NOTE": "Captain Topic engages directly with customers, learns from your help docs and past conversations, and delivers instant, accurate responses. It handles the initial queries, providing quick resolutions before  transferring to an agent when needed."
         }
       }
     },
@@ -483,7 +483,7 @@
           "ERROR": "Please provide a valid URL for the document"
         },
         "ASSISTANT": {
-          "LABEL": "Assistant",
+          "LABEL": "Topic",
           "PLACEHOLDER": "Select the assistant",
           "ERROR": "The assistant field is required"
         }
@@ -536,7 +536,7 @@
         "ERROR_MESSAGE": "There was an error deleting the FAQ, please try again."
       },
       "FILTER": {
-        "ASSISTANT": "Assistant: {selected}",
+        "ASSISTANT": "Topic: {selected}",
         "STATUS": "Status: {selected}",
         "ALL_ASSISTANTS": "Sve"
       },
@@ -564,7 +564,7 @@
           "ERROR": "Please provide a valid answer."
         },
         "ASSISTANT": {
-          "LABEL": "Assistant",
+          "LABEL": "Topic",
           "PLACEHOLDER": "Select an assistant",
           "ERROR": "Please select an assistant."
         }

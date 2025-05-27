@@ -1,6 +1,6 @@
 class Api::V1::Accounts::Captain::DocumentsController < Api::V1::Accounts::BaseController
   before_action :current_account
-  before_action -> { check_authorization(Captain::Assistant) }
+  before_action -> { check_authorization(Captain::Topic) }
 
   before_action :set_current_page, only: [:index]
   before_action :set_documents, except: [:create]
@@ -19,7 +19,7 @@ class Api::V1::Accounts::Captain::DocumentsController < Api::V1::Accounts::BaseC
   def show; end
 
   def create
-    return render_could_not_create_error('Missing Assistant') if @assistant.nil?
+    return render_could_not_create_error('Missing Topic') if @assistant.nil?
 
     @document = @assistant.documents.build(document_params)
     @document.save!

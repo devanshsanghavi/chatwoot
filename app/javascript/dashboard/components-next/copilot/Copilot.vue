@@ -7,8 +7,8 @@ import { COPILOT_EVENTS } from 'dashboard/helper/AnalyticsHelper/events';
 import CopilotInput from './CopilotInput.vue';
 import CopilotLoader from './CopilotLoader.vue';
 import CopilotAgentMessage from './CopilotAgentMessage.vue';
-import CopilotAssistantMessage from './CopilotAssistantMessage.vue';
-import ToggleCopilotAssistant from './ToggleCopilotAssistant.vue';
+import CopilotTopicMessage from './CopilotTopicMessage.vue';
+import ToggleCopilotTopic from './ToggleCopilotTopic.vue';
 import Icon from '../icon/Icon.vue';
 
 const props = defineProps({
@@ -32,13 +32,13 @@ const props = defineProps({
     type: Array,
     default: () => [],
   },
-  activeAssistant: {
+  activeTopic: {
     type: Object,
     default: () => ({}),
   },
 });
 
-const emit = defineEmits(['sendMessage', 'reset', 'setAssistant']);
+const emit = defineEmits(['sendMessage', 'reset', 'setTopic']);
 
 const { t } = useI18n();
 
@@ -100,7 +100,7 @@ watch(
           :support-agent="supportAgent"
           :message="message"
         />
-        <CopilotAssistantMessage
+        <CopilotTopicMessage
           v-else-if="COPILOT_USER_ROLES.includes(message.role)"
           :message="message"
           :conversation-inbox-type="conversationInboxType"
@@ -132,11 +132,11 @@ watch(
 
     <div class="mx-3 mt-px mb-2">
       <div class="flex items-center gap-2 justify-between w-full mb-1">
-        <ToggleCopilotAssistant
+        <ToggleCopilotTopic
           v-if="assistants.length"
           :assistants="assistants"
-          :active-assistant="activeAssistant"
-          @set-assistant="$event => emit('setAssistant', $event)"
+          :active-assistant="activeTopic"
+          @set-assistant="$event => emit('setTopic', $event)"
         />
         <div v-else />
         <button

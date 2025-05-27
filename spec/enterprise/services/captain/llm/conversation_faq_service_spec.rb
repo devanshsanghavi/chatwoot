@@ -70,7 +70,7 @@ RSpec.describe Captain::Llm::ConversationFaqService do
         create(:captain_assistant_response, assistant: captain_assistant, question: 'Similar question', answer: 'Similar answer')
       end
       let(:similar_neighbor) do
-        # Using OpenStruct here to mock as the Captain:AssistantResponse does not implement
+        # Using OpenStruct here to mock as the Captain:TopicResponse does not implement
         # neighbor_distance as a method or attribute rather it is returned directly
         # from SQL query in neighbor gem
         OpenStruct.new(

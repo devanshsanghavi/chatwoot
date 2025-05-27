@@ -6,26 +6,26 @@ import { useMapGetter } from 'dashboard/composables/store';
 import { useAlert } from 'dashboard/composables';
 import { useI18n } from 'vue-i18n';
 import PageLayout from 'dashboard/components-next/captain/PageLayout.vue';
-import EditAssistantForm from '../../../../components-next/captain/pageComponents/assistant/EditAssistantForm.vue';
-import AssistantPlayground from 'dashboard/components-next/captain/assistant/AssistantPlayground.vue';
+import EditTopicForm from '../../../../components-next/captain/pageComponents/assistant/EditTopicForm.vue';
+import TopicPlayground from 'dashboard/components-next/captain/assistant/TopicPlayground.vue';
 
 const route = useRoute();
 const store = useStore();
 const { t } = useI18n();
 const assistantId = route.params.assistantId;
-const uiFlags = useMapGetter('captainAssistants/getUIFlags');
+const uiFlags = useMapGetter('captainTopics/getUIFlags');
 const isFetching = computed(() => uiFlags.value.fetchingItem);
 const assistant = computed(() =>
-  store.getters['captainAssistants/getRecord'](Number(assistantId))
+  store.getters['captainTopics/getRecord'](Number(assistantId))
 );
 
-const isAssistantAvailable = computed(() => !!assistant.value?.id);
+const isTopicAvailable = computed(() => !!assistant.value?.id);
 
-const handleSubmit = async updatedAssistant => {
+const handleSubmit = async updatedTopic => {
   try {
-    await store.dispatch('captainAssistants/update', {
+    await store.dispatch('captainTopics/update', {
       id: assistantId,
-      ...updatedAssistant,
+      ...updatedTopic,
     });
     useAlert(t('CAPTAIN.ASSISTANTS.EDIT.SUCCESS_MESSAGE'));
   } catch (error) {
@@ -36,8 +36,8 @@ const handleSubmit = async updatedAssistant => {
 };
 
 onMounted(() => {
-  if (!isAssistantAvailable.value) {
-    store.dispatch('captainAssistants/show', assistantId);
+  if (!isTopicAvailable.value) {
+    store.dispatch('captainTopics/show', assistantId);
   }
 });
 </script>
@@ -51,19 +51,19 @@ onMounted(() => {
     :back-url="{ name: 'captain_assistants_index' }"
   >
     <template #body>
-      <div v-if="!isAssistantAvailable">
+      <div v-if="!isTopicAvailable">
         {{ t('CAPTAIN.ASSISTANTS.EDIT.NOT_FOUND') }}
       </div>
       <div v-else class="flex gap-4 h-full">
         <div class="flex-1 lg:overflow-auto pr-4 h-full md:h-auto">
-          <EditAssistantForm
+          <EditTopicForm
             :assistant="assistant"
             mode="edit"
             @submit="handleSubmit"
           />
         </div>
         <div class="w-[400px] hidden lg:block h-full">
-          <AssistantPlayground :assistant-id="Number(assistantId)" />
+          <TopicPlayground :assistant-id="Number(assistantId)" />
         </div>
       </div>
     </template>

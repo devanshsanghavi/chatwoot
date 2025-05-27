@@ -22,10 +22,10 @@
 #  index_captain_assistant_responses_on_status        (status)
 #  vector_idx_knowledge_entries_embedding             (embedding) USING ivfflat
 #
-class Captain::AssistantResponse < ApplicationRecord
+class Captain::TopicResponse < ApplicationRecord
   self.table_name = 'captain_assistant_responses'
 
-  belongs_to :assistant, class_name: 'Captain::Assistant'
+  belongs_to :assistant, class_name: 'Captain::Topic'
   belongs_to :account
   belongs_to :documentable, polymorphic: true, optional: true
   has_neighbors :embedding, normalize: true

@@ -1,20 +1,20 @@
 <script setup>
-import AssistantCard from './AssistantCard.vue';
+import TopicCard from './TopicCard.vue';
 import { assistantsList } from 'dashboard/components-next/captain/pageComponents/emptyStates/captainEmptyStateContent.js';
 </script>
 
 <template>
   <Story
-    title="Captain/Assistant/AssistantCard"
+    title="Captain/Topic/TopicCard"
     :layout="{ type: 'grid', width: '700px' }"
   >
-    <Variant title="Assistant Card">
+    <Variant title="Topic Card">
       <div
         v-for="(assistant, index) in assistantsList"
         :key="index"
         class="px-20 py-4 bg-white dark:bg-slate-900"
       >
-        <AssistantCard
+        <TopicCard
           :id="assistant.id"
           :name="assistant.name"
           :description="assistant.description"

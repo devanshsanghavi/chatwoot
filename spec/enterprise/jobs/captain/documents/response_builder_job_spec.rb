@@ -31,7 +31,7 @@ RSpec.describe Captain::Documents::ResponseBuilderJob, type: :job do
       it 'creates new responses for each FAQ' do
         expect do
           described_class.new.perform(document)
-        end.to change(Captain::AssistantResponse, :count).by(2)
+        end.to change(Captain::TopicResponse, :count).by(2)
 
         responses = document.responses.reload
         expect(responses.count).to eq(2)

@@ -1,16 +1,16 @@
 import { FEATURE_FLAGS } from 'dashboard/featureFlags';
 import { INSTALLATION_TYPES } from 'dashboard/constants/installationTypes';
 import { frontendURL } from '../../../helper/URLHelper';
-import AssistantIndex from './assistants/Index.vue';
-import AssistantEdit from './assistants/Edit.vue';
-import AssistantInboxesIndex from './assistants/inboxes/Index.vue';
+import TopicIndex from './assistants/Index.vue';
+import TopicEdit from './assistants/Edit.vue';
+import TopicInboxesIndex from './assistants/inboxes/Index.vue';
 import DocumentsIndex from './documents/Index.vue';
 import ResponsesIndex from './responses/Index.vue';
 
 export const routes = [
   {
     path: frontendURL('accounts/:accountId/captain/assistants'),
-    component: AssistantIndex,
+    component: TopicIndex,
     name: 'captain_assistants_index',
     meta: {
       permissions: ['administrator', 'agent'],
@@ -23,7 +23,7 @@ export const routes = [
   },
   {
     path: frontendURL('accounts/:accountId/captain/assistants/:assistantId'),
-    component: AssistantEdit,
+    component: TopicEdit,
     name: 'captain_assistants_edit',
     meta: {
       permissions: ['administrator', 'agent'],
@@ -38,7 +38,7 @@ export const routes = [
     path: frontendURL(
       'accounts/:accountId/captain/assistants/:assistantId/inboxes'
     ),
-    component: AssistantInboxesIndex,
+    component: TopicInboxesIndex,
     name: 'captain_assistants_inboxes_index',
     meta: {
       permissions: ['administrator', 'agent'],
