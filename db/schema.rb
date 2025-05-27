@@ -124,24 +124,24 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_215503) do
     t.string "name"
     t.string "external_link", null: false
     t.text "content"
-    t.bigint "assistant_id", null: false
+    t.bigint "topic_id", null: false
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0, null: false
     t.index ["account_id"], name: "index_aiagent_documents_on_account_id"
-    t.index ["assistant_id", "external_link"], name: "index_aiagent_documents_on_assistant_id_and_external_link", unique: true
-    t.index ["assistant_id"], name: "index_aiagent_documents_on_assistant_id"
+    t.index ["topic_id", "external_link"], name: "index_aiagent_documents_on_topic_id_and_external_link", unique: true
+    t.index ["topic_id"], name: "index_aiagent_documents_on_topic_id"
     t.index ["status"], name: "index_aiagent_documents_on_status"
   end
 
   create_table "aiagent_inboxes", force: :cascade do |t|
-    t.bigint "captain_assistant_id", null: false
+    t.bigint "aiagent_topic_id", null: false
     t.bigint "inbox_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["captain_assistant_id", "inbox_id"], name: "index_aiagent_inboxes_on_captain_assistant_id_and_inbox_id", unique: true
-    t.index ["captain_assistant_id"], name: "index_aiagent_inboxes_on_captain_assistant_id"
+    t.index ["aiagent_topic_id", "inbox_id"], name: "index_aiagent_inboxes_on_aiagent_topic_id_and_inbox_id", unique: true
+    t.index ["aiagent_topic_id"], name: "index_aiagent_inboxes_on_aiagent_topic_id"
     t.index ["inbox_id"], name: "index_aiagent_inboxes_on_inbox_id"
   end
 
@@ -149,7 +149,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_215503) do
     t.string "question", null: false
     t.text "answer", null: false
     t.vector "embedding", limit: 1536
-    t.bigint "assistant_id", null: false
+    t.bigint "topic_id", null: false
     t.bigint "documentable_id"
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
@@ -157,7 +157,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_215503) do
     t.integer "status", default: 1, null: false
     t.string "documentable_type"
     t.index ["account_id"], name: "index_aiagent_topic_responses_on_account_id"
-    t.index ["assistant_id"], name: "index_aiagent_topic_responses_on_assistant_id"
+    t.index ["topic_id"], name: "index_aiagent_topic_responses_on_topic_id"
     t.index ["documentable_id", "documentable_type"], name: "idx_cap_asst_resp_on_documentable"
     t.index ["embedding"], name: "vector_idx_knowledge_entries_embedding", using: :ivfflat
     t.index ["status"], name: "index_aiagent_topic_responses_on_status"
@@ -592,9 +592,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_215503) do
     t.bigint "account_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "assistant_id"
+    t.integer "topic_id"
     t.index ["account_id"], name: "index_copilot_threads_on_account_id"
-    t.index ["assistant_id"], name: "index_copilot_threads_on_assistant_id"
+    t.index ["topic_id"], name: "index_copilot_threads_on_topic_id"
     t.index ["user_id"], name: "index_copilot_threads_on_user_id"
   end
 
