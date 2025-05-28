@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_215503) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_28_225657) do
   # These extensions should be enabled to support this database
   enable_extension "pg_stat_statements"
   enable_extension "pg_trgm"
@@ -140,6 +140,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_215503) do
     t.bigint "inbox_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "aiagent_topic_id"
     t.index ["aiagent_topic_id", "inbox_id"], name: "index_aiagent_inboxes_on_aiagent_topic_id_and_inbox_id", unique: true
     t.index ["aiagent_topic_id"], name: "index_aiagent_inboxes_on_aiagent_topic_id"
     t.index ["inbox_id"], name: "index_aiagent_inboxes_on_inbox_id"
