@@ -26,6 +26,22 @@ export default {
       const replyTo = this.message?.content_attributes?.in_reply_to;
       return replyTo ? this.allMessages[replyTo] : null;
     },
+    isHelpful() {
+      return this.message?.content_attributes?.helpful || false;
+    },
+  },
+  methods: {
+    toggleHelpful(event) {
+      const helpfulValue = event.target.checked;
+      this.$store.dispatch('message/update', {
+        email: this.message.email || '',
+        messageId: this.message.id,
+        submittedValues: {
+          ...this.message.content_attributes,
+          helpful: helpfulValue,
+        },
+      });
+    },
   },
 };
 </script>
@@ -43,6 +59,17 @@ export default {
     :message="message"
     :reply-to="replyTo"
   />
+  <!-- Helpful toggle -->
+  <div class="helpful-toggle">
+    <label>
+      <input
+        type="checkbox"
+        :checked="isHelpful"
+        @change="toggleHelpful"
+      />
+      Helpful?
+    </label>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -51,5 +78,10 @@ export default {
   flex-direction: row;
   align-items: flex-end;
   max-width: 90%;
+}
+.helpful-toggle {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: #555;
 }
 </style>

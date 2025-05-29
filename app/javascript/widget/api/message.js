@@ -6,7 +6,7 @@ export default {
     const urlData = authEndPoint.updateMessage(messageId);
     return API.patch(urlData.url, {
       contact: { email },
-      message: { submitted_values: values },
+      message: { content_attributes: values },
     });
   },
 };

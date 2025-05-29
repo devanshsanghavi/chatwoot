@@ -29,10 +29,7 @@ export const actions = {
         'conversation/updateMessage',
         {
           id: messageId,
-          content_attributes: {
-            submitted_email: email,
-            submitted_values: email ? null : submittedValues,
-          },
+          content_attributes: submittedValues,
         },
         { root: true }
       );
