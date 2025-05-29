@@ -564,8 +564,7 @@ export default {
       <template #unreadBadge>
         <li v-show="unreadMessageCount != 0" class="unread--toast">
           <span>
-            Helllllooo
-            <!-- {{ unreadMessageLabel }} -->
+            {{ unreadMessageLabel }}
           </span>
         </li>
       </template>
