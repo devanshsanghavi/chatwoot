@@ -8,6 +8,7 @@
 #  content_attributes        :json
 #  content_type              :integer          default("text"), not null
 #  external_source_ids       :jsonb
+#  helpful                   :boolean
 #  message_type              :integer          not null
 #  private                   :boolean          default(FALSE), not null
 #  processed_message_content :text
@@ -206,7 +207,7 @@ class Message < ApplicationRecord
     return false unless human_response? && !private?
     return false if conversation.first_reply_created_at.present?
     return false if conversation.messages.outgoing
-                                .where.not(sender_type: ['AgentBot', 'Captain::Assistant'])
+                                .where.not(sender_type: ['AgentBot', 'Aiagent::Topic'])
                                 .where.not(private: true)
                                 .where("(additional_attributes->'campaign_id') is null").count > 1
 
